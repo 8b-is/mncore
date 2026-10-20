@@ -90,7 +90,11 @@ fi
 export PYENV_ROOT="/tmp/${EXAMPLE_NAME}/dataset_pyenv"
 export PATH="${PYENV_ROOT}/bin:${PATH}"
 if ! command -v pyenv &> /dev/null; then
-    curl https://pyenv.run | bash
+    # -f so an error page is a curl failure instead of HTML piped into bash, which
+    # is how this fell over on the 08-19 nightly: the body came back as
+    # "<!DOCTYPE ... Hello ..." and bash reported "!DOCTYPE: No such file or
+    # directory" with exit 127.
+    curl -fsSL --retry 3 --retry-all-errors --retry-delay 5 https://pyenv.run | bash
 fi
 if ! pyenv versions --bare | grep -q "^3.6.15"; then
     pyenv install 3.6.15

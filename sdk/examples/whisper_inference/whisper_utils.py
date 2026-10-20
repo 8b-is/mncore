@@ -1,3 +1,6 @@
+# Portions adapted from openai/whisper. Copyright (c) 2022 OpenAI.
+# See LICENSE.whisper for the MIT License and license_note.md for source references.
+
 import argparse
 import os
 

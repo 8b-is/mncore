@@ -1,4 +1,6 @@
 #! /bin/bash
+# Usage:
+# ./examples/run_llm_infer.sh --prepare_attention_mask_on_cpu --device mncore2:auto --load_codegen_prefill /tmp/mlsdk_llm_infer/prefill --load_codegen_decode /tmp/mlsdk_llm_infer/decode
 
 set -eux -o pipefail
 
